@@ -24,17 +24,9 @@ def register_val(reg):
         'ra': 31
     }
 
-def int_to_binary(num):
-    arr = []
-    def DecimalToBinary(n):
-        if n >= 1:
-            DecimalToBinary(n // 2)
-        arr.append(n%2)
-    DecimalToBinary(num)
-    binary=""
-    for i in arr:
-        binary+=str(i)
-    return binary
+def int_to_binary(n):
+    return '1011'
+            
 
 def mnemonic_binary(name):
     if name=="add":
@@ -136,8 +128,12 @@ data = open('data.txt', 'r')
 lines=data.readlines()
 data.close()
 
-for cmd in lines:
+for i in range(len(lines)):
+    cmd=lines[i]
+    cmd = cmd.replace(')',' ')
+    cmd = cmd.replace('(','')
     cmd = cmd.replace(',','')
     cmd = cmd.replace('$','')
-
-converter('addi s0 t1 5')
+    lines[i] = cmd
+    
+print(converter(lines[1]))
