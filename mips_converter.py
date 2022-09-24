@@ -23,11 +23,8 @@ def register_val(reg):
         'fp': 30,
         'ra': 31
     }
-
-def int_to_binary(n):
-    return '1011'
-            
-
+    return(reg_dict[reg])
+         
 def mnemonic_binary(name):
     if name=="add":
         return "010100"
@@ -89,6 +86,22 @@ def mnemonic_binary(name):
         print("Invalid Menmonic.")
         exit()
 
+def decimalToBinary(N):
+     
+    # To store the binary number
+    B_Number = 0
+    cnt = 0
+    while (N != 0):
+        rem = N % 2
+        c = pow(10, cnt)
+        B_Number += rem * c
+        N //= 2
+         
+        # Count used to store exponent value
+        cnt += 1
+     
+    return str(B_Number)
+    
 def converter(assm_code):
     commands = assm_code.split(' ')
     type = mnemonic_type(commands[0])
@@ -99,12 +112,12 @@ def converter(assm_code):
         reg1 = register_val(commands[1])
         if commands[2][0] in alphabets:
             reg2 = register_val(commands[2])
-            off_imm = int_to_binary(int(commands[3]))
+            off_imm = decimalToBinary(int(commands[3]))
         else:
             reg2 = register_val(commands[3])
-            off_imm = int_to_binary(int(commands[2]))
-        reg1_bin = int_to_binary(reg1)
-        reg2_bin = int_to_binary(reg2)
+            off_imm = decimalToBinary(int(commands[2]))
+        reg1_bin = decimalToBinary(reg1)
+        reg2_bin = decimalToBinary(reg2)
         
         defict_reg1=5-len(reg1_bin)
         defict_reg2=5-len(reg2_bin)
@@ -121,7 +134,6 @@ def converter(assm_code):
         for i in range(defict_off_imm):
             off_imm='0'+off_imm
         return binary
-
 
         
 data = open('data.txt', 'r')
