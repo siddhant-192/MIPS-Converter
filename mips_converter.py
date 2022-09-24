@@ -179,3 +179,4 @@ for i in range(len(lines)):
 print(converter(lines[0]))
 
 #addi $s0, 10, $t1
+#add $t1, $s0, $k1
