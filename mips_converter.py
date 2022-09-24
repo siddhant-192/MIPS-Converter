@@ -133,6 +133,34 @@ def converter(assm_code):
         defict_off_imm=16-len(off_imm)
         for i in range(defict_off_imm):
             off_imm='0'+off_imm
+        binary[3] = off_imm
+        return binary
+
+    elif type == 'r_type':
+        binary=['000000','00000','00000','00000','00000','000000']
+        binary[5]=mnemonic_binary(commands[0])
+        reg1 = register_val(commands[2])
+        reg2 = register_val(commands[3])
+        reg3 = register_val(commands[1])
+
+        reg1_bin = decimalToBinary(reg1)
+        reg2_bin = decimalToBinary(reg2)
+        reg3_bin = decimalToBinary(reg3)
+
+        defict_reg1=5-len(reg1_bin)
+        defict_reg2=5-len(reg2_bin)
+        defict_reg3=5-len(reg3_bin)
+
+        for i in range(defict_reg1):
+            reg1_bin='0'+reg1_bin
+        for i in range(defict_reg2):
+            reg2_bin='0'+reg2_bin
+        for i in range(defict_reg3):
+            reg3_bin='0'+reg3_bin
+
+        binary[1]=reg1_bin
+        binary[2]=reg2_bin
+        binary[3]=reg3_bin
         return binary
 
         
@@ -148,4 +176,6 @@ for i in range(len(lines)):
     cmd = cmd.replace('$','')
     lines[i] = cmd
     
-print(converter(lines[1]))
+print(converter(lines[0]))
+
+#addi $s0, 10, $t1
