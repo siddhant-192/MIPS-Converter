@@ -188,6 +188,11 @@ def restructure_write(lines):
 
     f.close()
 
+
+for i in range(len(lines)-1):
+    temp=lines[i][:-1]
+    lines[i]=temp
+
 restructure_write(lines)
 
 #addi $s0, 10, $t1
