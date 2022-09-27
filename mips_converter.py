@@ -179,12 +179,17 @@ def restructure_write(lines):
 
     f = open('output.txt','w')
 
+    count=0
     for line in lines:
+        count+=1
         ans = converter(line)
         str_temp=""
         for elem in ans:
             str_temp+=elem
-        f.write(str_temp)
+        if count<len(lines):
+            f.write(str_temp+'\n')
+        else:
+            f.write(str_temp)
 
     f.close()
 
@@ -194,6 +199,3 @@ for i in range(len(lines)-1):
     lines[i]=temp
 
 restructure_write(lines)
-
-#addi $s0, 10, $t1
-#add $t1, $s0, $k1
