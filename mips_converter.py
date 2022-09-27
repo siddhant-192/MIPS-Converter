@@ -164,7 +164,7 @@ def converter(assm_code):
         return binary
 
         
-data = open('data.txt', 'r')
+data = open('data.asm', 'r')
 lines=data.readlines()
 data.close()
 
