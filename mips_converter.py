@@ -184,8 +184,8 @@ for line in lines:
     for elem in ans:
         str_temp+=elem
     f.write(str_temp)
-    
-#print(converter(lines[0]))
+
+f.close()
 
 #addi $s0, 10, $t1
 #add $t1, $s0, $k1
