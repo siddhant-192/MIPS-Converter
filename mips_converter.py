@@ -168,24 +168,27 @@ data = open('data.asm', 'r')
 lines=data.readlines()
 data.close()
 
-for i in range(len(lines)):
-    cmd=lines[i]
-    cmd = cmd.replace(')',' ')
-    cmd = cmd.replace('(','')
-    cmd = cmd.replace(',','')
-    cmd = cmd.replace('$','')
-    lines[i] = cmd
+def restructure_write(lines):
+    for i in range(len(lines)):
+        cmd=lines[i]
+        cmd = cmd.replace(')',' ')
+        cmd = cmd.replace('(','')
+        cmd = cmd.replace(',','')
+        cmd = cmd.replace('$','')
+        lines[i] = cmd
 
-f = open('output.txt','w')
+    f = open('output.txt','w')
 
-for line in lines:
-    ans = converter(line)
-    str_temp=""
-    for elem in ans:
-        str_temp+=elem
-    f.write(str_temp)
+    for line in lines:
+        ans = converter(line)
+        str_temp=""
+        for elem in ans:
+            str_temp+=elem
+        f.write(str_temp)
 
-f.close()
+    f.close()
+
+restructure_write(lines)
 
 #addi $s0, 10, $t1
 #add $t1, $s0, $k1
