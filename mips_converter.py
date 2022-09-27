@@ -175,8 +175,17 @@ for i in range(len(lines)):
     cmd = cmd.replace(',','')
     cmd = cmd.replace('$','')
     lines[i] = cmd
+
+f = open('output.txt','w')
+
+for line in lines:
+    ans = converter(line)
+    str_temp=""
+    for elem in ans:
+        str_temp+=elem
+    f.write(str_temp)
     
-print(converter(lines[0]))
+#print(converter(lines[0]))
 
 #addi $s0, 10, $t1
 #add $t1, $s0, $k1
