@@ -168,6 +168,7 @@ data = open('data.asm', 'r')
 lines=data.readlines()
 data.close()
 
+
 def restructure_write(lines):
     for i in range(len(lines)):
         cmd=lines[i]
@@ -197,5 +198,9 @@ def restructure_write(lines):
 for i in range(len(lines)-1):
     temp=lines[i][:-1]
     lines[i]=temp
+
+for line in lines:
+    if line == '':
+        lines.remove(line)
 
 restructure_write(lines)
