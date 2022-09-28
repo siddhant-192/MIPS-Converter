@@ -1,3 +1,15 @@
+def binary_to_hex(val):
+    hex_dict={
+        '0000':'0' ,'0001':'1' ,'0010':'2' ,'0011':'3' ,'0100':'4' ,'0101':'5' ,'0110':'6' ,'0111':'7' ,'1000':'8' ,'1001':'9' ,'1010':'A' ,'1011':'B' ,'1100':'C' ,'1101':'D' ,'1110':'E' ,'1111':'F'
+    }
+    hex_ans='0x'
+    for i in range(8):
+        temp=i*4
+        sepr=val[temp:temp+4]
+        hex_eq=hex_dict[sepr]
+        hex_ans+=hex_eq
+    return hex_ans
+
 def mnemonic_type(var):
     i_type=['addi','addiu','andi','beq','bne','lbu','lhu','ll','lui','lw','ori','slti','sltiu','sb','sc','sh','sw']
     r_type=['add','addu','and','jr','nor','or','slt','sltu','sll','srl','sub','subu']
@@ -187,10 +199,11 @@ def restructure_write(lines):
         str_temp=""
         for elem in ans:
             str_temp+=elem
+        hx_ans=binary_to_hex(str_temp)
         if count<len(lines):
-            f.write(str_temp+'\n')
+            f.write(hx_ans+'\n')
         else:
-            f.write(str_temp)
+            f.write(hx_ans)
 
     f.close()
 
