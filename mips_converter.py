@@ -201,17 +201,22 @@ def restructure_write(lines):
 
     f.close()
 
-        
+def clean_lines(lines):
+    for i in range(len(lines)-1):
+        temp=lines[i][:-1]
+        lines[i]=temp
+
+    for line in lines:
+        if line == '':
+            lines.remove(line)
+    return lines
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 data = open('data.asm', 'r')
 lines=data.readlines()
 data.close()
 
-for i in range(len(lines)-1):
-    temp=lines[i][:-1]
-    lines[i]=temp
-
-for line in lines:
-    if line == '':
-        lines.remove(line)
+lines=clean_lines(lines)
 
 restructure_write(lines)
