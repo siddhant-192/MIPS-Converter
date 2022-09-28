@@ -175,12 +175,6 @@ def converter(assm_code):
         binary[3]=reg3_bin
         return binary
 
-        
-data = open('data.asm', 'r')
-lines=data.readlines()
-data.close()
-
-
 def restructure_write(lines):
     for i in range(len(lines)):
         cmd=lines[i]
@@ -207,6 +201,10 @@ def restructure_write(lines):
 
     f.close()
 
+        
+data = open('data.asm', 'r')
+lines=data.readlines()
+data.close()
 
 for i in range(len(lines)-1):
     temp=lines[i][:-1]
